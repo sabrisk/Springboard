@@ -28,4 +28,4 @@ for (let i = 0; i < OPERATIONS_ATTENDED; i++) {
 		vacationDays += DAY_REWARD_PER_ATTENDANCE;
 	}
 }
-console.log("Vacation days earned: ", vacationDays)
+console.log("Vacation days earned: ", vacationDays);
