@@ -88,7 +88,6 @@ function transferMoney(fromAccountId, toAccountId, amount) {
 	const fromAccount = getAccountById(fromAccountId);
 	const toAccount = getAccountById(toAccountId);
 
-	debugger;
 	if (!Number.isFinite(amount) || amount < 0) {
 		throw new Error(
 			"Invalid value for transfer amount: The amount must be a positive finite number."
