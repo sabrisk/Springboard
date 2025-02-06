@@ -3,7 +3,6 @@ const accounts = [
 	{ id: 2, owner: "Bob", balance: 300 },
 ];
 
-// doesn't handle id not found
 function getAccountById(id) {
 	for (const account of accounts) {
 		if (account.id === id) {
@@ -61,7 +60,6 @@ function depositMoney(accountId, amount) {
 	account.balance += amount;
 }
 
-// work on this next
 function withdrawMoney(accountId, amount) {
 	const account = getAccountById(accountId);
 
