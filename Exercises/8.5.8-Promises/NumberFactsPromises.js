@@ -21,7 +21,6 @@ async function getNumberFacts(numRanges) {
 	console.log("\n");
 }
 
-//probably do a promise all here
 async function getFavoriteNumberFacts(num, numFacts) {
 	const promisesArr = [];
 	for (let i = 0; i < numFacts; i++) {
