@@ -1,27 +1,40 @@
 const numbersAPI = "http://numbersapi.com/";
 
-async function getNumberFact(num) {
+async function getNumberFact() {
+	const num = 54;
 	const response = await fetch(numbersAPI + num + "?json");
 	const json = await response.json();
-	console.log("\n-----Get a single number fact-----");
-	console.log(json.text);
+	const titleElem = document.createElement("p");
+
+	titleElem.textContent = "-----Get a single number fact-----";
+	document.body.append(titleElem);
+
+	const p = document.createElement("p");
+	p.textContent = json.text;
+	document.body.append(p);
 }
 
-async function getNumberFacts(numRanges) {
+async function getNumberFacts() {
+	const numRanges = "1..10";
 	const response = await fetch(numbersAPI + numRanges);
 	const json = await response.json();
+	const titleElem = document.createElement("p");
 
-	console.log("\n-----Get multiple number facts-----");
+	titleElem.textContent = "-----Get multiple number facts-----";
+	document.body.append(titleElem);
+
 	for (const key in json) {
+		const p = document.createElement("p");
 		if (json.hasOwnProperty(key)) {
-			const value = json[key];
-			console.log(value);
+			p.textContent = json[key];
+			document.body.append(p);
 		}
 	}
-	console.log("\n");
 }
 
-async function getFavoriteNumberFacts(num, numFacts) {
+async function getFavoriteNumberFacts() {
+	const num = 7;
+	const numFacts = 7;
 	const promisesArr = [];
 	for (let i = 0; i < numFacts; i++) {
 		const numberPromise = fetch(numbersAPI + num + "?json").then((res) =>
@@ -29,16 +42,17 @@ async function getFavoriteNumberFacts(num, numFacts) {
 		);
 		promisesArr.push(numberPromise);
 	}
-
 	const responses = await Promise.all(promisesArr);
-	console.log("\n------Get " + numFacts + " favorite number facts-----");
+
+	const titleElem = document.createElement("p");
+
+	titleElem.textContent =
+		"------Get " + numFacts + " favorite number facts-----";
+	document.body.append(titleElem);
+
 	for (r of responses) {
-		console.log(r.text);
+		const p = document.createElement("p");
+		p.textContent = r.text;
+		document.body.append(p);
 	}
 }
-
-getNumberFact(69);
-
-getNumberFacts("1..10");
-
-getFavoriteNumberFacts(7, 7);
