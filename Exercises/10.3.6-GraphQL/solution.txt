@@ -1,0 +1,213 @@
+# Welcome to GraphiQL
+#
+# GraphiQL is an in-browser tool for writing, validating, and
+# testing GraphQL queries.
+#
+# Type queries into this side of the screen, and you will see intelligent
+# typeaheads aware of the current GraphQL type schema and live syntax and
+# validation errors highlighted within the text.
+#
+# GraphQL queries typically start with a "{" character. Lines that start
+# with a # are ignored.
+#
+# An example GraphQL query might look like:
+#
+
+##### LIST ALL FILMS #####
+# query {
+# 	allFilms {
+# 		films {
+#       title
+#     }
+#   }
+# }
+
+##### FETCH A SPECIFIC CHARACTER #####
+# query {
+#   person(id:"cGVvcGxlOjE=") {
+#     name
+#   }
+# }
+
+##### EXPLORE PLANETS #####
+# query {
+#   allPlanets(first:5){
+#     planets{
+#       name
+#     }
+#   }
+# }
+
+##### STARSHIPS INFORMATION #####
+# query {
+#   allStarships(first:3) {
+#     starships {
+#       name,
+#       model
+#     }
+#   }
+# }
+
+##### Character and Their Starships #####
+# query {
+#   allPeople(first:5) {
+#     people {
+#       name
+#       starshipConnection {
+#         starships {
+#           name
+#         }
+#       }
+#     }
+#   }
+# }
+
+##### Species and Their Language #####
+# query {
+#   allSpecies(first:5) {
+#     species {
+#       name,
+#       language
+#     }
+#   }
+# }
+##### Planets and Their Climates #####
+# query {
+#   allPlanets(first:5) {
+#     planets {
+#       name,
+#       climates
+#     }
+#   }
+# }
+
+##### Vehicles and Their Cost #####
+# query {
+#   allVehicles(first:3) {
+#     vehicles {
+#       name,
+#       costInCredits
+#     }
+#   }
+# }
+
+##### Characters in a Specific Film #####
+# query {
+#   film(id: "ZmlsbXM6MQ==") {
+#     title,
+#     characterConnection {
+#       characters {
+#         name
+#       }
+#     }
+#   }
+# }
+
+##### Multi-Film Characters #####
+# query{
+#   allPeople {
+#     people {
+#       name
+#       filmConnection {
+#         totalCount
+#       }
+#     }
+#   }
+# }
+
+##### Aggregate Film Statistics #####
+# query {
+#   allPeople {
+#     totalCount
+#   }
+# }
+
+##### Full Character Profiles #####
+# query {
+#   person(id:"cGVvcGxlOjE=") {
+#     name,
+#     birthYear,
+#     filmConnection {
+#       films {
+#         title
+#       }
+#     },
+#     starshipConnection {
+#       starships {
+#         name
+#       }
+#     },
+#     homeworld {
+#       name
+#     }
+#   }
+# }
+
+
+##### Link Characters with Their Planets #####
+
+# query	{
+#   allPeople(first: 5) {
+#     people {
+#       name
+#       homeworld {
+#         name,
+#         population
+#       }
+#     },
+  
+#   }
+# }
+
+##### Vehicles, Their Pilots, and Pilots' Species #####
+# query {
+#   allVehicles(first: 3) {
+#     vehicles {
+#       name,
+#       pilotConnection {
+#         pilots {
+#           name,
+#           species {
+#             name
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
+
+##### Films and Their Associated Entities #####
+# query {
+#   allFilms(first: 3) {
+#     films {
+#       title,
+#       characterConnection {
+#       	characters {
+#           name,
+#         } 
+#       },
+#       planetConnection {
+#         planets {
+#           name
+#         }
+#       },
+#       starshipConnection {
+#         starships {
+#           name
+#         }
+#       }
+#     }
+#   }
+# }
+
+# Keyboard shortcuts:
+#
+#   Prettify query:  Shift-Ctrl-P (or press the prettify button)
+#
+#  Merge fragments:  Shift-Ctrl-M (or press the merge button)
+#
+#        Run Query:  Ctrl-Enter (or press the play button)
+#
+#    Auto Complete:  Ctrl-Space (or just start typing)
+#
+
