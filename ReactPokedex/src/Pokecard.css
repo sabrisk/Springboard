@@ -1,9 +1,0 @@
-.item {
-	flex: 0 0 25%; /* 4 per row */
-	box-sizing: border-box;
-	padding: 1rem;
-	border: 1px solid #ccc;
-	display: flex;
-	flex-direction: column;
-	align-items: center; /* center contents horizontally */
-}
