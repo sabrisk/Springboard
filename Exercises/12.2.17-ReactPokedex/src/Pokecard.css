@@ -1,0 +1,39 @@
+.item {
+	display: flex;
+	flex: 0 0 15%;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	box-sizing: border-box;
+	aspect-ratio: 3.5 /4;
+	background-color: rgb(211 211 211);
+	border: 1px solid #ccc;
+	border-radius: 7%;
+	min-width: 180px;
+	margin: 2em;
+	padding: 1rem;
+	font-family: sans-serif;
+}
+
+.name {
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #0058ff;
+}
+
+.details {
+	text-align: center;
+	color: black;
+}
+
+.details p {
+	text-transform: capitalize;
+}
+
+.details p {
+	margin-bottom: 0;
+}
+
+.details p:last-child {
+	margin-top: 0;
+}
