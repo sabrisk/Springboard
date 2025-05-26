@@ -1,0 +1,24 @@
+.mission-action {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.mission-action button {
+	color: white;
+	background-color: black;
+	font-size: 1em;
+	border: 2px solid lightgreen;
+	min-width: 8em;
+	min-height: 3em;
+}
+
+.mission-action button:hover {
+	border-style: inset;
+}
+
+.mission-action button:active {
+	border-style: outset;
+
+	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* INNER shadow */
+}

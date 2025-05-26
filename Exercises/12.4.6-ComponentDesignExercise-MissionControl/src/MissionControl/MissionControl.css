@@ -1,0 +1,8 @@
+.mission-control {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.mission-control h1 {
+}

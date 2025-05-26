@@ -1,0 +1,31 @@
+/* .mission-card h3,
+p {
+	color: white;
+} */
+
+.mission-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 2px solid white;
+	padding: 1em;
+}
+
+.mission-filter button {
+	color: white;
+	background-color: black;
+	font-size: 1em;
+	border: 2px solid red;
+	min-width: 10em;
+	min-height: 3em;
+}
+
+.mission-filter button:hover {
+	border-style: inset;
+}
+
+.mission-filter button:active {
+	border-style: outset;
+
+	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* INNER shadow */
+}

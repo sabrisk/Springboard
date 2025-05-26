@@ -1,0 +1,55 @@
+.mission-filter {
+	display: flex;
+	gap: 0.5em;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+	.mission-filter {
+		justify-content: center;
+	}
+}
+
+.mission-filter button {
+	color: white;
+	background-color: black;
+	font-size: 1em;
+	border: 2px solid red;
+	min-width: 10em;
+	min-height: 3em;
+}
+
+.mission-filter button:hover {
+	border-style: inset;
+}
+
+.mission-filter button:active {
+	border-style: outset;
+
+	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2); /* INNER shadow */
+}
+/* 
+.mission-filter button {
+	background-color: #4caf50;
+	color: white;
+	padding: 12px 24px;
+	font-size: 16px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	transition: all 0.2s ease;
+	transform: translateY(0);
+}
+
+
+.mission-filter button:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+.mission-filter button:active {
+	transform: translateY(2px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+} */
