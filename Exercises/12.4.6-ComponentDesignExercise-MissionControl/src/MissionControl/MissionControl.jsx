@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import MissionCard from "../MissionCard/MissionCard";
-import "./MissionControl.css";
 import MissionFilter from "../MissionFilter/MissionFilter";
 import MissionAction from "../MissionAction/MissionAction";
+import "./MissionControl.css";
 
 const MissionControl = ({ missions }) => {
 	const [allMissions, setAllMissions] = useState(missions);
@@ -27,7 +27,7 @@ const MissionControl = ({ missions }) => {
 
 	return (
 		<div className="mission-control">
-			<h1>Mission Control</h1>
+			<h1>Space Mission Control</h1>
 			<MissionFilter setFilter={setFilter} />
 
 			{filteredMissions.map((mission) => {
