@@ -1,0 +1,29 @@
+.FireButton button {
+	display: flex;
+	background-color: orange;
+	width: 5em;
+	height: 5em;
+	border-radius: 50%;
+	border: 8px solid red;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+
+.FireButton button:active {
+	border-width: 12px;
+}
+
+.FireButton button {
+	font-size: 2em;
+}
+
+.FireButton .firing {
+	background-color: orange;
+	border-color: red;
+}
+
+.FireButton .game-over {
+	background-color: black;
+	border-color: white;
+}

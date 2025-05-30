@@ -1,0 +1,7 @@
+.GameStatus {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 3px solid white;
+	height: 25%;
+}
