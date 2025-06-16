@@ -1,0 +1,18 @@
+.Deck {
+	display: flex;
+	flex-direction: column;
+}
+
+/* .cards {
+	position: absolute;
+} */
+
+.button-area button {
+	margin: 5px 5px;
+}
+
+.card-area {
+	position: relative;
+	width: 500px;
+	height: 500px;
+}
