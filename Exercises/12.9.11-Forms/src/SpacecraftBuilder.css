@@ -1,0 +1,9 @@
+.SpacecraftBuilder {
+	display: flex;
+	flex-direction: column;
+}
+
+.SpacecraftBuilder h1 {
+	align-items: center;
+	margin-bottom: 0;
+}

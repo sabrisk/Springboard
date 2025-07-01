@@ -1,0 +1,75 @@
+.ItemForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.ItemForm input[type="text"],
+.ItemForm .checkbox-container {
+	display: block;
+	height: 3em;
+	background-color: black;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	font-size: medium;
+	padding-left: 1em;
+	color: white;
+}
+
+.ItemForm input[type="text"].error,
+.ItemForm .checkbox-container.error {
+	border: 1px solid #ff7d87;
+}
+
+.ItemForm button {
+	align-self: flex-end;
+	width: 10em;
+	height: 3em;
+	border: 3px solid yellowgreen;
+	background-color: black;
+	color: white;
+}
+
+.ItemForm input:focus,
+.ItemForm input:active {
+	background-color: black;
+}
+
+.ItemForm input::placeholder {
+	/* padding-left: 0.5em; */
+	font-size: medium;
+	color: #adadad;
+}
+
+input:-webkit-autofill {
+	box-shadow: 0 0 0 1000px black inset !important;
+	-webkit-text-fill-color: white !important;
+	caret-color: white;
+	transition: background-color 5000s ease-in-out 0s;
+	padding-left: 1em;
+}
+
+.ItemForm .checkbox-container {
+	display: flex;
+	align-items: center;
+}
+
+.ItemForm .checkbox-container .checkbox-label {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.ItemForm .checkbox-container .checkbox-label span {
+	font-size: large;
+}
+.ItemForm .checkbox-container input {
+	transform: scale(1.2);
+	transform-origin: center;
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+	border: 2px solid #ff7d87;
+	box-shadow: none;
+}
