@@ -1,0 +1,10 @@
+.back-button {
+	justify-content: flex-end;
+	width: 10em;
+	height: 3em;
+	background-color: black;
+	color: white;
+	font-family: "Poppins";
+	margin-bottom: 2em;
+	border: 2px solid yellowgreen;
+}
