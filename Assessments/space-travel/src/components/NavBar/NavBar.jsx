@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import NavButton from "../NavButton/NavButton";
 
 import styles from "./NavBar.module.css";
 
@@ -11,17 +11,8 @@ const links = [
 const NavBar = () => {
 	return (
 		<nav className={styles.nav}>
-			{links.map(({ name, emoji, path }) => (
-				<NavLink
-					className={({ isActive }) =>
-						isActive
-							? `${styles.link} ${styles.active}`
-							: `${styles.link}`
-					}
-					to={path}
-				>
-					{emoji} {name}
-				</NavLink>
+			{links.map((link) => (
+				<NavButton {...link} />
 			))}
 		</nav>
 	);

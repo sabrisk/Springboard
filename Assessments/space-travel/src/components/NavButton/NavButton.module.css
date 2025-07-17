@@ -1,0 +1,9 @@
+.link {
+	padding: 1em;
+	text-decoration: none;
+	border: 2px solid transparent;
+}
+
+.active {
+	border: 2px solid white;
+}
