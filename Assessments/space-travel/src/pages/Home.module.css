@@ -1,0 +1,16 @@
+.home {
+	display: flex;
+	flex-direction: column;
+}
+
+.home h2 {
+	align-self: center;
+	margin-bottom: 3em;
+}
+
+.home .cards {
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
+	margin-bottom: 3em;
+}

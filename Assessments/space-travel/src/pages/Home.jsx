@@ -27,10 +27,13 @@ const data = [
 
 const Home = () => {
 	return (
-		<div>
-			{data.map((cardInfo) => (
-				<InfoCard {...cardInfo} />
-			))}
+		<div className={styles.home}>
+			<h2>Space Travel: Expanding Horizons Beyond Earth</h2>
+			<div className={styles.cards}>
+				{data.map((cardInfo) => (
+					<InfoCard {...cardInfo} />
+				))}
+			</div>
 		</div>
 	);
 };
