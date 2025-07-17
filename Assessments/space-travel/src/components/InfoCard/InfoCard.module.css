@@ -1,0 +1,12 @@
+.infoCard h2 {
+	font-size: 1em;
+	margin-bottom: 1em;
+	margin-top: 2em;
+}
+
+.infoCard p {
+	margin-bottom: 4em;
+	border: 1px dashed white;
+	padding: 1em;
+	line-height: 1.5;
+}
