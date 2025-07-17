@@ -5,11 +5,11 @@ import InfoCard from "../components/InfoCard/InfoCard";
 const data = [
 	{
 		title: "Journey into the Future",
-		text: "In a world where the impossible has become reality, where the stars are no longer out of reach, welcome to the future of humanity's survival and exploration. Winess the evolution of technology as it transforms barren planets into thriving havens, all mde possible by the wonders of innovation and human determination.",
+		text: "In a world where the impossible has become reality, where the stars are no longer out of reach, welcome to the future of humanity's survival and exploration. Witness the evolution of technology as it transforms barren planets into thriving havens, all made possible by the wonders of innovation and human determination.",
 	},
 	{
 		title: "From Neglect to Innovation",
-		text: "Once the cradle of civilization, Earth now stands as a solemn reminder of the consequences of neglect and environmental decline. But fear not, for the ingenuity of mankind has soared to new heights. With our relentless pursuit of advancement, we have not only healed our scars but extended our reach acorss the cosmos.",
+		text: "Once the cradle of civilization, Earth now stands as a solemn reminder of the consequences of neglect and environmental decline. But fear not, for the ingenuity of mankind has soared to new heights. With our relentless pursuit of advancement, we have not only healed our scars but extended our reach across the cosmos.",
 	},
 	{
 		title: "Enter Space Travel: Where Dreams Take Flight",
