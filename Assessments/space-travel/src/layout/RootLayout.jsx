@@ -11,7 +11,9 @@ const RootLayout = () => {
 				<NavBar />
 			</header>
 			<main className={styles.mainContent}>
-				<Outlet />
+				<div className={styles.pageContent}>
+					<Outlet />
+				</div>
 				<Footer />
 			</main>
 		</div>
