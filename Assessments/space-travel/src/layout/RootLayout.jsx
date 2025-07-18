@@ -12,8 +12,8 @@ const RootLayout = () => {
 			</header>
 			<main className={styles.mainContent}>
 				<Outlet />
+				<Footer />
 			</main>
-			<Footer />
 		</div>
 	);
 };
