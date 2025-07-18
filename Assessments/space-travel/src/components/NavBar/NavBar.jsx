@@ -1,4 +1,4 @@
-import NavButton from "../NavButton/NavButton";
+import AppNavLink from "../AppNavLink/AppNavLink";
 
 import styles from "./NavBar.module.css";
 
@@ -12,7 +12,7 @@ const NavBar = () => {
 	return (
 		<nav className={styles.nav}>
 			{links.map((link) => (
-				<NavButton {...link} />
+				<AppNavLink {...link} />
 			))}
 		</nav>
 	);

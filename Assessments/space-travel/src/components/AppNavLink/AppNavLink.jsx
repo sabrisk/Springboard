@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import styles from "./NavButton.module.css";
+import styles from "./AppNavLink.module.css";
 
-const NavButton = ({ path, emoji, name }) => {
+const AppNavLink = ({ path, emoji, name }) => {
 	return (
 		<NavLink
 			className={({ isActive }) =>
@@ -14,4 +14,4 @@ const NavButton = ({ path, emoji, name }) => {
 	);
 };
 
-export default NavButton;
+export default AppNavLink;
