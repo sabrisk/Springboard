@@ -1,8 +1,6 @@
 .footer {
 	display: flex;
 	justify-content: space-between;
-	flex-direction: row;
-	min-width: 50%;
-	flex-shrink: 0;
 	margin-bottom: 1em;
+	margin-top: 3em;
 }
