@@ -8,7 +8,8 @@
 .mainContent {
 	flex: 1 0 auto;
 	max-width: 40%;
-	flex: 1;
+	min-width: 40%;
+	/* flex: 1; */
 	min-height: 0;
 }
 
