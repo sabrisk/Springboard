@@ -1,0 +1,9 @@
+.spacecrafts {
+	display: flex;
+	flex-direction: column;
+}
+
+.pageHeader {
+	display: flex;
+	justify-content: flex-start;
+}
