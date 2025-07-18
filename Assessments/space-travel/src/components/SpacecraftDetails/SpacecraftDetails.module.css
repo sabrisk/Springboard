@@ -1,0 +1,6 @@
+.spacecraftDetails {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	font-size: 0.9em;
+}

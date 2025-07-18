@@ -1,0 +1,13 @@
+.spaceCraftCard {
+	display: flex;
+	border: 2px solid white;
+	padding: 1em;
+	align-items: center;
+	gap: 1em;
+}
+
+.action {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+}
