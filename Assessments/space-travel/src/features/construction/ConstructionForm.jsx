@@ -1,31 +1,32 @@
 import { useFormik } from "formik";
-import ActionButton from "../../components/ActionButton/ActionButton";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import ActionButton from "../../components/ActionButton/ActionButton";
+
 import { buildSpacecraft } from "../spacecrafts/spacecraftsSlice";
 
 import styles from "./ConstructionForm.module.css";
-// import { v4 as uuid } from "uuid";
 
 const validate = (values) => {
 	const errors = {};
-	// if (!values.name) {
-	// 	errors.name = "Required";
-	// }
-	// if (!values.qty) {
-	// 	errors.qty = "Required";
-	// }
-	// if (!values.purpose) {
-	// 	errors.purpose = "Required";
-	// }
-	// if (values.terms === false) {
-	// 	errors.terms = "Required";
-	// }
+	if (!values.name) {
+		errors.name = "Required";
+	}
+	if (!values.capacity) {
+		errors.capacity = "Required";
+	}
+	if (!values.description) {
+		errors.description = "Required";
+	}
 
 	return errors;
 };
 
 const ConstructionForm = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const INITIAL_STATE = {
 		name: "",
 		capacity: "",
@@ -37,12 +38,9 @@ const ConstructionForm = () => {
 		initialValues: INITIAL_STATE,
 		validate,
 		onSubmit: (values, { resetForm }) => {
-			// addItem({ ...values, id: uuid() });
-			console.log(values);
 			dispatch(buildSpacecraft(values));
 			resetForm();
-
-			//dispatch here?
+			navigate("/spacecrafts");
 		},
 	});
 
@@ -55,7 +53,6 @@ const ConstructionForm = () => {
 				className={styles.constructionForm}
 				onSubmit={formik.handleSubmit}
 			>
-				{/* <form onSubmit={formik.handleSubmit} className="ItemForm"> */}
 				<div className={styles.formBody}>
 					<input
 						className={getInputClass("name")}
@@ -101,19 +98,29 @@ const ConstructionForm = () => {
 						value={formik.values.pictureUrl}
 						autoComplete="off"
 					/>
-					{/* <button type="submit" disabled={!formik.isValid || !formik.dirty}>
-				Add
-			</button> */}
 				</div>
 			</form>
 			<div className={styles.pageFooter}>
-				<ActionButton
-					path="/spacecrafts"
-					// actionFunc={formik.submitForm}
-					name="Build"
-					emoji="🏗️"
-					isSubmit={true}
-				/>
+				<div className={styles.validation}>
+					{formik.touched.name && formik.errors.name ? (
+						<div>Name {formik.errors.name}</div>
+					) : null}
+					{formik.touched.capacity && formik.errors.capacity ? (
+						<div>Capacity {formik.errors.capacity}</div>
+					) : null}
+					{formik.touched.description && formik.errors.description ? (
+						<div>Description {formik.errors.description}</div>
+					) : null}
+				</div>
+
+				<div className={styles.build}>
+					<ActionButton
+						name="Build"
+						emoji="🏗️"
+						actionFunc={formik.submitForm}
+						isSubmit={true}
+					/>
+				</div>
 			</div>
 		</>
 	);
