@@ -1,46 +1,46 @@
+import { useEffect } from "react";
+
 import ActionButton from "../components/ActionButton/ActionButton";
 import SpacecraftCard from "../features/spacecrafts/SpacecraftCard/SpacecraftCard";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+	selectAllSpacecrafts,
+	getSpacecraftsStatus,
+	getSpacecrafts,
+	getSpacecraftsError,
+} from "../features/spacecrafts/spacecraftsSlice";
+
 import styles from "./Spacecrafts.module.css";
 
-const spacecrafts = [
-	{
-		imageURL:
-			"https://c7.alamy.com/comp/C0DW8G/artists-concept-of-a-space-shuttle-entering-earth-orbit-C0DW8G.jpg",
-		name: "Space Shuttle",
-		capacity: 10000,
-	},
-	{
-		imageURL:
-			"https://c7.alamy.com/comp/C0DW8G/artists-concept-of-a-space-shuttle-entering-earth-orbit-C0DW8G.jpg",
-		name: "Space Shuttle",
-		capacity: 10000,
-	},
-	{
-		imageURL:
-			"https://c7.alamy.com/comp/C0DW8G/artists-concept-of-a-space-shuttle-entering-earth-orbit-C0DW8G.jpg",
-		name: "Space Shuttle",
-		capacity: 10000,
-	},
-	{
-		imageURL:
-			"https://c7.alamy.com/comp/C0DW8G/artists-concept-of-a-space-shuttle-entering-earth-orbit-C0DW8G.jpg",
-		name: "Space Shuttle",
-		capacity: 10000,
-	},
-];
-
 const Spacecrafts = () => {
+	const dispatch = useDispatch();
+	const spacecrafts = useSelector(selectAllSpacecrafts);
+	const spacecraftsStatus = useSelector(getSpacecraftsStatus);
+	const error = useSelector(getSpacecraftsError);
+
+	useEffect(() => {
+		if (spacecraftsStatus === "idle") {
+			dispatch(getSpacecrafts());
+		}
+	}, [spacecraftsStatus, dispatch]);
+
+	let content;
+	console.log("status", spacecraftsStatus);
+	if (spacecraftsStatus === "loading") {
+		content = <p>"Loading..."</p>;
+	} else if (spacecraftsStatus === "succeeded") {
+		content = spacecrafts.map((craft) => <SpacecraftCard {...craft} />);
+	} else if (spacecraftsStatus === "failed") {
+		content = <p>{error}</p>;
+	}
+
 	return (
 		<div className={styles.spacecrafts}>
 			<div className={styles.pageHeader}>
 				<ActionButton name="Build a Spacecraft" emoji="🏗️" />
 			</div>
-			<div className={styles.pageBody}>
-				{spacecrafts.map((craft) => (
-					<SpacecraftCard {...craft} />
-				))}
-			</div>
+			<div className={styles.pageBody}>{content}</div>
 		</div>
 	);
 };
