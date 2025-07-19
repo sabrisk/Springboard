@@ -38,7 +38,12 @@ const Spacecrafts = () => {
 	return (
 		<div className={styles.spacecrafts}>
 			<div className={styles.pageHeader}>
-				<ActionButton name="Build a Spacecraft" emoji="🏗️" />
+				<ActionButton
+					name="Build a Spacecraft"
+					emoji="🏗️"
+					path="/spacecrafts/construction"
+					isSubmit={false}
+				/>
 			</div>
 			<div className={styles.pageBody}>{content}</div>
 		</div>
