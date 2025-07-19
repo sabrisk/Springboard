@@ -1,5 +1,5 @@
 import ActionButton from "../components/ActionButton/ActionButton";
-import SpacecraftCard from "../components/SpacecraftCard/SpacecraftCard";
+import SpacecraftCard from "../features/spacecrafts/SpacecraftCard/SpacecraftCard";
 
 import styles from "./Spacecrafts.module.css";
 
