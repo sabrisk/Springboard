@@ -1,0 +1,4 @@
+.planets {
+	display: flex;
+	flex-direction: column;
+}

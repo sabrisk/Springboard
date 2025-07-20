@@ -1,0 +1,25 @@
+.planetCard {
+	display: flex;
+	border: 2px solid white;
+	padding: 2em 1em;
+	align-items: center;
+	gap: 1em;
+}
+
+.action {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+}
+
+.planetInfo {
+	display: flex;
+	flex-direction: column;
+	border: 2px dashed white;
+	padding: 1em 2em;
+}
+
+.details {
+	margin-top: 1.5em;
+	margin-left: -1em;
+}
