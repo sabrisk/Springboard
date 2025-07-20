@@ -20,7 +20,7 @@ function BackButton() {
 
 	return (
 		<button onClick={() => navigate(-1)} className={styles.button}>
-			Go Back 👈
+			Go Back <span class={styles.emoji}>👈</span>
 		</button>
 	);
 }
