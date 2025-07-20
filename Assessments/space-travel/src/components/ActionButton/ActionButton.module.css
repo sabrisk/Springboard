@@ -6,3 +6,7 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+button:hover {
+	border-color: yellowgreen;
+}
