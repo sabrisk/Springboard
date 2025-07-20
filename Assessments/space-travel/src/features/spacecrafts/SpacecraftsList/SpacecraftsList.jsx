@@ -4,10 +4,10 @@ import SpacecraftCard from "../SpacecraftCard/SpacecraftCard";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
-	selectAllSpacecrafts,
-	getSpacecraftsStatus,
 	getSpacecrafts,
-	getSpacecraftsError,
+	selectAllSpacecrafts,
+	selectSpacecraftsStatus,
+	selectSpacecraftsError,
 } from "../spacecraftsSlice";
 
 import styles from "./SpacecraftsList.module.css";
@@ -15,8 +15,8 @@ import styles from "./SpacecraftsList.module.css";
 const SpacecraftsList = () => {
 	const dispatch = useDispatch();
 	const spacecrafts = useSelector(selectAllSpacecrafts);
-	const spacecraftsStatus = useSelector(getSpacecraftsStatus);
-	const error = useSelector(getSpacecraftsError);
+	const spacecraftsStatus = useSelector(selectSpacecraftsStatus);
+	const spacecraftsError = useSelector(selectSpacecraftsError);
 
 	useEffect(() => {
 		if (spacecraftsStatus === "idle") {
@@ -31,7 +31,7 @@ const SpacecraftsList = () => {
 	} else if (spacecraftsStatus === "succeeded") {
 		content = spacecrafts.map((craft) => <SpacecraftCard {...craft} />);
 	} else if (spacecraftsStatus === "failed") {
-		content = <p>{error}</p>;
+		content = <p>{spacecraftsError}</p>;
 	}
 
 	return <div className={styles.pageBody}>{content}</div>;
