@@ -19,12 +19,27 @@
 	/* align-items: center; */
 }
 
-input {
+input,
+textarea {
 	width: 95%;
 	background-color: black;
 	color: white;
 	border: 2px solid white;
 	padding: 0.5em;
+	font-family: inherit;
+}
+
+input::placeholder {
+	color: rgb(192, 192, 192);
+}
+
+textarea {
+	line-height: 1.5em;
+	resize: none;
+}
+
+textarea::placeholder {
+	color: rgb(192, 192, 192);
 }
 
 .validation {
@@ -35,4 +50,23 @@ input {
 	font-weight: 500; /* or whatever you want */
 	color: red;
 	min-height: 1em; /* optional: keeps a minimum size */
+}
+
+textarea::-webkit-scrollbar {
+	width: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+	background: rgb(44, 44, 44);
+	border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+	background: rgb(117, 117, 117);
+	border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+	background: #555;
+	cursor: default;
 }

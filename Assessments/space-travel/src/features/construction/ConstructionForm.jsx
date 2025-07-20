@@ -76,17 +76,18 @@ const ConstructionForm = () => {
 						value={formik.values.capacity}
 						autoComplete="off"
 					/>
-					<input
+					<textarea
 						className={getInputClass("description")}
 						id="description"
 						name="description"
-						type="text"
 						placeholder="Description"
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}
 						value={formik.values.description}
 						autoComplete="off"
+						rows="6"
 					/>
+
 					<input
 						className={getInputClass("pictureUrl")}
 						id="pictureUrl"
