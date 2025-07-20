@@ -4,6 +4,10 @@
 	border: 2px solid transparent;
 }
 
+.link:hover {
+	color: yellowgreen;
+}
+
 .active {
 	border: 2px solid white;
 }
