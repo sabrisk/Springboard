@@ -7,6 +7,10 @@
 	cursor: pointer;
 }
 
+button:hover {
+	border-color: yellowgreen;
+}
+
 .emoji {
 	display: inline-block;
 	vertical-align: text-top;
