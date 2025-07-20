@@ -29,6 +29,14 @@ textarea {
 	font-family: inherit;
 }
 
+input:focus,
+textarea:focus,
+input:hover,
+textarea:hover {
+	border-color: yellowgreen;
+	outline: none;
+}
+
 input::placeholder {
 	color: rgb(192, 192, 192);
 }
