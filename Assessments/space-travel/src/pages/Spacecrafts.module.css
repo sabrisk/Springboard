@@ -8,9 +8,3 @@
 	justify-content: flex-start;
 	margin-bottom: 2em;
 }
-
-.pageBody {
-	display: flex;
-	flex-direction: column;
-	gap: 2em;
-}
