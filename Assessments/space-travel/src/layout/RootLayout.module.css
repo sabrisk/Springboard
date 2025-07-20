@@ -2,11 +2,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	min-height: 100vh;
 }
 
 .mainContent {
+	display: flex;
+	flex-direction: column;
 	max-width: 50%;
 	min-width: 50%;
+	flex: 1;
 }
 
 @media (max-width: 1024px) {
@@ -19,9 +23,11 @@
 .header {
 	display: flex;
 	justify-content: center;
+	padding-top: 3em;
 	margin-bottom: 5em;
 }
 
 .pageContent {
 	margin-bottom: 3em;
+	flex: 1;
 }
