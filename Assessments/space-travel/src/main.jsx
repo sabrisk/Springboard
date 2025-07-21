@@ -5,6 +5,11 @@ import App from "./App.jsx";
 
 import { store } from "./app/store.js";
 import { Provider } from "react-redux";
+import { getSpacecrafts } from "./features/spacecrafts/spacecraftsSlice.js";
+import { getPlanets } from "./features/planets/planetsSlice.js";
+
+store.dispatch(getSpacecrafts());
+store.dispatch(getPlanets());
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
