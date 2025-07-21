@@ -29,7 +29,7 @@ const PlanetsList = () => {
 	if (planetsStatus === "loading") {
 		content = <p>"Loading..."</p>;
 	} else if (planetsStatus === "succeeded") {
-		content = planets.map((planet) => <PlanetCard {...planet} />);
+		content = planets.map((planet) => <PlanetCard planet={planet} />);
 		// content = planets.map((planet) => <div>{planet.name}</div>);
 	} else if (planetsStatus === "failed") {
 		content = <p>{planetsError}</p>;

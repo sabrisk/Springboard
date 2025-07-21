@@ -1,8 +1,16 @@
 import styles from "./EntityDetails.module.css";
 
-const EntityDetails = ({ labels, showLabels = true }) => {
+const EntityDetails = ({ labels, size = "medium", showLabels = true }) => {
+	const entitySizes = {
+		small: ".8em",
+		medium: ".9em",
+	};
+
 	return (
-		<div className={styles.entityDetails}>
+		<div
+			className={styles.entityDetails}
+			style={{ fontSize: entitySizes[size] }}
+		>
 			{labels.map(
 				({ nameLabel, nameValue, amountLabel, amountValue }) => (
 					<>

@@ -2,7 +2,6 @@
 	display: flex;
 	border: 2px solid white;
 	padding: 2em 1em;
-	align-items: center;
 	gap: 1em;
 }
 
@@ -17,9 +16,28 @@
 	flex-direction: column;
 	border: 2px dashed white;
 	padding: 1em 2em;
+	cursor: pointer;
+}
+
+.planetInfo:hover {
+	border-color: yellowgreen;
 }
 
 .details {
 	margin-top: 1.5em;
 	margin-left: -1em;
+}
+
+.spacecrafts {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.spacecraftDetails {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
 }

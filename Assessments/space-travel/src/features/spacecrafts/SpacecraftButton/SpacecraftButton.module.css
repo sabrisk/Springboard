@@ -1,5 +1,4 @@
 .spacecraftButton {
-	padding: 1em;
 	border: 2px dashed white;
 	background-color: black;
 	display: inline-block;
@@ -7,4 +6,8 @@
 
 .spacecraftButton:hover {
 	border-color: yellowgreen;
+}
+
+.thumbnail {
+	display: block;
 }

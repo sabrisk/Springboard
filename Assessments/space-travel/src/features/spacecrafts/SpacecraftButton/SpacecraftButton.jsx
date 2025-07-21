@@ -7,12 +7,18 @@ const thumbnailSizes = {
 	large: { x: 100, y: 100 },
 };
 
-const SpacecraftButton = ({ size = "medium", imageURL }) => {
+const SpacecraftButton = ({ path = "", size = "small", imageURL }) => {
 	const { x, y } = thumbnailSizes[size];
 
 	return (
-		<NavLink to="/" className={styles.spacecraftButton}>
-			<img src={imageURL} alt="" width={x} height={y} />
+		<NavLink to={path} className={styles.spacecraftButton}>
+			<img
+				className={styles.thumbnail}
+				src={imageURL}
+				alt=""
+				width={x}
+				height={y}
+			/>
 		</NavLink>
 	);
 };
