@@ -66,7 +66,7 @@ const PlanetCard = ({ planet, selectedPlanetId, setSelectedPlanetId }) => {
 					<div className={styles.spacecraftDetails}>
 						<SpacecraftButton
 							size="small"
-							imageURL={craft.pictureUrl}
+							pictureUrl={craft.pictureUrl}
 						/>
 						<EntityDetails
 							labels={getSpacecraftLabels(craft)}
