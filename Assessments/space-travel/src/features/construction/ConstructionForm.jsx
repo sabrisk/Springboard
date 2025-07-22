@@ -38,7 +38,12 @@ const ConstructionForm = () => {
 		initialValues: INITIAL_STATE,
 		validate,
 		onSubmit: (values, { resetForm }) => {
-			dispatch(buildSpacecraft(values));
+			dispatch(
+				buildSpacecraft({
+					...values,
+					capacity: parseInt(values.capacity),
+				})
+			);
 			resetForm();
 			navigate("/spacecrafts");
 		},
