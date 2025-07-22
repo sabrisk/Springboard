@@ -21,7 +21,7 @@ const SpacecraftCard = ({ id, name, capacity, pictureUrl }) => {
 
 	return (
 		<div className={styles.spaceCraftCard}>
-			<SpacecraftButton size="medium" imageURL={pictureUrl} />
+			<SpacecraftButton size="large" imageURL={pictureUrl} />
 			<EntityDetails labels={labels} />
 			<div className={styles.action}>
 				<ActionButton
