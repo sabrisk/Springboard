@@ -1,5 +1,4 @@
 import styles from "./PlanetCard.module.css";
-// import SpacecraftButton from "../SpacecraftButton/SpacecraftButton";
 import EntityDetails from "../../../components/EntityDetails/EntityDetails";
 import SpacecraftButton from "../../spacecrafts/SpacecraftButton/SpacecraftButton";
 import { useDispatch } from "react-redux";
@@ -24,8 +23,7 @@ const getSpacecraftLabels = (craft) => {
 
 	return spacecraftLabels;
 };
-// id, name, currentPopulation, pictureUrl
-const PlanetCard = ({ planet }) => {
+const PlanetCard = ({ planet, selectedPlanetId, setSelectedPlanetId }) => {
 	const dispatch = useDispatch();
 	console.log("planet", planet);
 	const spacecrafts = useSelector(selectAllSpacecrafts);
@@ -49,7 +47,15 @@ const PlanetCard = ({ planet }) => {
 
 	return (
 		<div className={styles.planetCard}>
-			<div className={styles.planetInfo}>
+			<div
+				className={`${styles.planetInfo} ${
+					selectedPlanetId === planet.id ? styles.selected : ""
+				}`}
+				onClick={() => {
+					console.log("Setting selected ID:", planet.id);
+					setSelectedPlanetId(planet.id);
+				}}
+			>
 				<img src={planet.pictureUrl} alt="" width={x} height={y} />
 				<div className={styles.details}>
 					<EntityDetails labels={planetLabels} showLabels={false} />

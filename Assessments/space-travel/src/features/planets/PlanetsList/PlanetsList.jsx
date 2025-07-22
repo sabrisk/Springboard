@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import PlanetCard from "../PlanetCard/PlanetCard";
 
@@ -14,6 +14,8 @@ import styles from "./PlanetsList.module.css";
 
 const PlanetsList = () => {
 	const dispatch = useDispatch();
+	const [selectedPlanetId, setSelectedPlanetId] = useState("");
+
 	const planets = useSelector(selectAllPlanets);
 	const planetsStatus = useSelector(selectPlanetsStatus);
 	const planetsError = useSelector(selectPlanetsError);
@@ -25,12 +27,16 @@ const PlanetsList = () => {
 	}, [planetsStatus, dispatch]);
 
 	let content;
-	console.log("status", planetsStatus);
 	if (planetsStatus === "loading") {
 		content = <p>"Loading..."</p>;
 	} else if (planetsStatus === "succeeded") {
-		content = planets.map((planet) => <PlanetCard planet={planet} />);
-		// content = planets.map((planet) => <div>{planet.name}</div>);
+		content = planets.map((planet) => (
+			<PlanetCard
+				planet={planet}
+				setSelectedPlanetId={setSelectedPlanetId}
+				selectedPlanetId={selectedPlanetId}
+			/>
+		));
 	} else if (planetsStatus === "failed") {
 		content = <p>{planetsError}</p>;
 	}

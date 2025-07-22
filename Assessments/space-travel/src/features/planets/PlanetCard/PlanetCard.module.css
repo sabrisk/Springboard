@@ -23,6 +23,10 @@
 	border-color: yellowgreen;
 }
 
+.selected {
+	border-color: yellowgreen;
+}
+
 .details {
 	margin-top: 1.5em;
 	margin-left: -1em;
