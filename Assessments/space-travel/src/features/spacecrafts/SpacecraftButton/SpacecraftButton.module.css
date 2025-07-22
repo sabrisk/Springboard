@@ -8,6 +8,14 @@
 	border-color: yellowgreen;
 }
 
+.selected {
+	border-color: darkred;
+}
+
+.selected:hover {
+	border-color: darkred;
+}
+
 .thumbnail {
 	display: block;
 }

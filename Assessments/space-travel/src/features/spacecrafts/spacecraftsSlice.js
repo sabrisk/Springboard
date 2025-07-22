@@ -6,10 +6,13 @@ const initialState = {
 	getSpacecraftsStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 	buildSpacecraftStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 	destroySpacecraftByIdStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+	sendSpacecraftToPlanetStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 
 	getSpacecraftsError: null,
 	buildSpacecraftError: null,
+
 	destroySpacecraftByIdError: null,
+	sendSpacecraftToPlanetError: null,
 };
 
 export const getSpacecrafts = createAsyncThunk(
@@ -17,7 +20,6 @@ export const getSpacecrafts = createAsyncThunk(
 	async () => {
 		try {
 			const response = await SpaceTravelApi.getSpacecrafts();
-			console.log("getSpacecrafts thunk", response);
 			return [...response.data];
 		} catch (err) {
 			return err.message;
@@ -32,7 +34,6 @@ export const buildSpacecraft = createAsyncThunk(
 			const response = await SpaceTravelApi.buildSpacecraft(
 				newSpacecraft
 			);
-			console.log("buildSpacecraft thunk", response);
 			await dispatch(getSpacecrafts());
 			return response;
 		} catch (err) {
@@ -46,10 +47,23 @@ export const destroySpacecraftById = createAsyncThunk(
 	async (id, { dispatch }) => {
 		try {
 			const response = await SpaceTravelApi.destroySpacecraftById(id);
-			console.log("destroySpacecraftById thunk", response);
-			console.log("destroySpacecraftById thunk id", id);
 			await dispatch(getSpacecrafts());
 			return response;
+		} catch (err) {
+			return err.message;
+		}
+	}
+);
+
+export const sendSpacecraftToPlanet = createAsyncThunk(
+	"spacecrafts/sendSpacecraftToPlanet",
+	async ({ spacecraftId, originPlanetId, targetPlanetId, capacity }) => {
+		try {
+			const response = await SpaceTravelApi.sendSpacecraftToPlanet({
+				spacecraftId,
+				targetPlanetId,
+			});
+			return { spacecraftId, originPlanetId, targetPlanetId, capacity };
 		} catch (err) {
 			return err.message;
 		}
@@ -66,7 +80,6 @@ const spacecraftsSlice = createSlice({
 			})
 			.addCase(getSpacecrafts.fulfilled, (state, action) => {
 				state.getSpacecraftsStatus = "succeeded";
-				console.log(action.payload);
 				state.list = action.payload;
 			})
 			.addCase(getSpacecrafts.rejected, (state, action) => {
@@ -88,12 +101,25 @@ const spacecraftsSlice = createSlice({
 			})
 			.addCase(destroySpacecraftById.fulfilled, (state, action) => {
 				state.destroySpacecraftByIdStatus = "succeeded";
-				console.log(action.payload);
-				// state.list = action.payload;
 			})
 			.addCase(destroySpacecraftById.rejected, (state, action) => {
 				state.destroySpacecraftByIdStatus = "failed";
 				state.destroySpacecraftByIdError = action.error.message;
+			})
+			.addCase(sendSpacecraftToPlanet.pending, (state, action) => {
+				state.sendSpacecraftToPlanetStatus = "loading";
+			})
+			.addCase(sendSpacecraftToPlanet.fulfilled, (state, action) => {
+				state.sendSpacecraftToPlanetStatus = "succeeded";
+				const spacecraftToUpdate = state.list.find(
+					(craft) => craft.id === action.payload.spacecraftId
+				);
+				spacecraftToUpdate.currentLocation =
+					action.payload.targetPlanetId;
+			})
+			.addCase(sendSpacecraftToPlanet.rejected, (state, action) => {
+				state.sendSpacecraftToPlanetStatus = "failed";
+				state.sendSpacecraftToPlanetError = action.error.message;
 			});
 	},
 });
@@ -114,5 +140,10 @@ export const selectDestroySpacecraftByIdStatus = (state) =>
 	state.spacecrafts.destroySpacecraftByIdStatus;
 export const selectDestroySpacecraftByIdError = (state) =>
 	state.spacecrafts.destroySpacecraftByIdError;
+
+export const selectSendSpacecraftToPlanetStatus = (state) =>
+	state.spacecrafts.sendSpacecraftToPlanetStatus;
+export const selectSendSpacecraftToPlanetError = (state) =>
+	state.spacecrafts.sendSpacecraftToPlanetError;
 
 export default spacecraftsSlice.reducer;

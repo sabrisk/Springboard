@@ -1,16 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import SpaceTravelApi from "../../services/SpaceTravelApi";
+import { sendSpacecraftToPlanet } from "../spacecrafts/spacecraftsSlice";
 
 const initialState = {
 	list: [],
 	getPlanetsStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 	getPlanetsError: null,
+	sendSpacecraftToPlanetStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+	sendSpacecraftToPlanetError: null,
 };
 
 export const getPlanets = createAsyncThunk("planets/getPlanets", async () => {
 	try {
 		const response = await SpaceTravelApi.getPlanets();
-		console.log("getPlanets thunk", response);
 		return [...response.data];
 	} catch (err) {
 		return err.message;
@@ -27,12 +29,41 @@ const planetsSlice = createSlice({
 			})
 			.addCase(getPlanets.fulfilled, (state, action) => {
 				state.getPlanetsStatus = "succeeded";
-				console.log(action.payload);
 				state.list = action.payload;
 			})
 			.addCase(getPlanets.rejected, (state, action) => {
 				state.getPlanetsStatus = "failed";
 				state.getPlanetsError = action.error.message;
+			})
+			.addCase(sendSpacecraftToPlanet.pending, (state, action) => {
+				state.sendSpacecraftToPlanetStatus = "loading";
+			})
+			.addCase(sendSpacecraftToPlanet.fulfilled, (state, action) => {
+				state.sendSpacecraftToPlanetStatus = "succeeded";
+
+				const { originPlanetId, targetPlanetId, capacity } =
+					action.payload;
+
+				let transferredCapacity = capacity;
+
+				const originPlanet = state.list.find(
+					(planet) => planet.id === originPlanetId
+				);
+
+				if (originPlanet.currentPopulation < transferredCapacity) {
+					transferredCapacity = originPlanet.currentPopulation;
+				}
+
+				originPlanet.currentPopulation -= transferredCapacity;
+
+				const targetPlanet = state.list.find(
+					(planet) => planet.id === targetPlanetId
+				);
+				targetPlanet.currentPopulation += transferredCapacity;
+			})
+			.addCase(sendSpacecraftToPlanet.rejected, (state, action) => {
+				state.sendSpacecraftToPlanetStatus = "failed";
+				state.sendSpacecraftToPlanetError = action.error.message;
 			});
 	},
 });

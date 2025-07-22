@@ -23,12 +23,15 @@ const getSpacecraftLabels = (craft) => {
 
 	return spacecraftLabels;
 };
-const PlanetCard = ({ planet, selectedPlanetId, setSelectedPlanetId }) => {
+const PlanetCard = ({
+	planet,
+	selectedPlanetId,
+	setSelectedPlanetId,
+	selectedSpacecraftId,
+	setSelectedSpacecraftId,
+}) => {
 	const dispatch = useDispatch();
-	console.log("planet", planet);
 	const spacecrafts = useSelector(selectAllSpacecrafts);
-	console.log("spacecrafts", spacecrafts);
-
 	const planetLabels = [
 		{
 			nameLabel: "Name: ",
@@ -43,7 +46,6 @@ const PlanetCard = ({ planet, selectedPlanetId, setSelectedPlanetId }) => {
 	const filteredSpacecrafts = spacecrafts.filter((craft) => {
 		return craft.currentLocation === planet.id;
 	});
-	console.log(filteredSpacecrafts);
 
 	return (
 		<div className={styles.planetCard}>
@@ -52,7 +54,6 @@ const PlanetCard = ({ planet, selectedPlanetId, setSelectedPlanetId }) => {
 					selectedPlanetId === planet.id ? styles.selected : ""
 				}`}
 				onClick={() => {
-					console.log("Setting selected ID:", planet.id);
 					setSelectedPlanetId(planet.id);
 				}}
 			>
@@ -65,8 +66,11 @@ const PlanetCard = ({ planet, selectedPlanetId, setSelectedPlanetId }) => {
 				{filteredSpacecrafts.map((craft) => (
 					<div className={styles.spacecraftDetails}>
 						<SpacecraftButton
+							id={craft.id}
 							size="small"
 							pictureUrl={craft.pictureUrl}
+							selectedSpacecraftId={selectedSpacecraftId}
+							setSelectedSpacecraftId={setSelectedSpacecraftId}
 						/>
 						<EntityDetails
 							labels={getSpacecraftLabels(craft)}

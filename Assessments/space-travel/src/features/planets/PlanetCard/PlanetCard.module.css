@@ -24,7 +24,11 @@
 }
 
 .selected {
-	border-color: yellowgreen;
+	border-color: darkred;
+}
+
+.selected:hover {
+	border-color: darkred;
 }
 
 .details {

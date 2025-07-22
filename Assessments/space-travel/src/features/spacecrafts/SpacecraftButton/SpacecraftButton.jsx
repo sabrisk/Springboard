@@ -7,11 +7,25 @@ const thumbnailSizes = {
 	large: { x: 100, y: 100 },
 };
 
-const SpacecraftButton = ({ path = "", size = "small", pictureUrl }) => {
+const SpacecraftButton = ({
+	id,
+	path = "",
+	size = "small",
+	pictureUrl,
+	selectedSpacecraftId,
+	setSelectedSpacecraftId,
+}) => {
 	const { x, y } = thumbnailSizes[size];
-
 	return (
-		<NavLink to={path} className={styles.spacecraftButton}>
+		<NavLink
+			to={path}
+			onClick={() => {
+				setSelectedSpacecraftId(id);
+			}}
+			className={`${styles.spacecraftButton} ${
+				selectedSpacecraftId === id ? styles.selected : ""
+			}`}
+		>
 			<img
 				className={styles.thumbnail}
 				src={pictureUrl}
