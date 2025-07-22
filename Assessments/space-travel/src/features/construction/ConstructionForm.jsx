@@ -11,13 +11,26 @@ import styles from "./ConstructionForm.module.css";
 const validate = (values) => {
 	const errors = {};
 	if (!values.name) {
-		errors.name = "Required";
+		errors.name = "required";
 	}
-	if (!values.capacity) {
-		errors.capacity = "Required";
+	if (
+		values.capacity === "" ||
+		values.capacity === null ||
+		values.capacity === undefined
+	) {
+		errors.capacity = "required";
+	} else {
+		const parsed = parseInt(values.capacity, 10);
+
+		if (isNaN(parsed)) {
+			errors.capacity = "must be a number";
+		} else if (parsed < 0) {
+			errors.capacity = "must be zero or greater";
+		}
 	}
+
 	if (!values.description) {
-		errors.description = "Required";
+		errors.description = "required";
 	}
 
 	return errors;
@@ -74,12 +87,19 @@ const ConstructionForm = () => {
 						className={getInputClass("capacity")}
 						id="capacity"
 						name="capacity"
-						type="text"
+						type="number"
 						placeholder="Capacity"
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}
 						value={formik.values.capacity}
 						autoComplete="off"
+						step="1"
+						min="0"
+						onKeyDown={(e) => {
+							if ([".", ",", "e"].includes(e.key)) {
+								e.preventDefault();
+							}
+						}}
 					/>
 					<textarea
 						className={getInputClass("description")}
