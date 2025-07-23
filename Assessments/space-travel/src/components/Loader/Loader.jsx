@@ -2,25 +2,22 @@ import { useEffect, useState } from "react";
 import styles from "./Loader.module.css";
 
 const Loader = () => {
-	const [dots, setDots] = useState([]);
+	const [dotCount, setDotCount] = useState(0);
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
-			setDots((currDots) => {
-				if (currDots.length === 5) {
-					return [];
-				} else {
-					return [...currDots, <p>.</p>];
-				}
-			});
+			setDotCount((curr) => (curr >= 5 ? 0 : curr + 1));
 		}, 300);
+
 		return () => clearInterval(intervalId);
 	}, []);
 
 	return (
 		<div className={styles.loader}>
 			<p>Loading</p>
-			{dots}
+			{Array.from({ length: dotCount }).map((_, i) => (
+				<span key={i}>.</span>
+			))}
 		</div>
 	);
 };
