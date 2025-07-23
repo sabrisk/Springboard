@@ -33,7 +33,11 @@ const Spacecraft = () => {
 		<div>
 			<div className={styles.pageHeader}>
 				{spacecraft && (
-					<SpacecraftButton size="xLarge" pictureUrl={imgSrc} />
+					<SpacecraftButton
+						size="xLarge"
+						pictureUrl={imgSrc}
+						clickable={false}
+					/>
 				)}
 			</div>
 			<div className={styles.pageBody}>

@@ -15,14 +15,19 @@ const SpacecraftButton = ({
 	pictureUrl,
 	selectedSpacecraftId,
 	setSelectedSpacecraftId,
+	clickable = true,
 }) => {
 	const { x, y } = thumbnailSizes[size];
 	return (
 		<NavLink
 			to={path}
-			onClick={() => {
-				setSelectedSpacecraftId(id);
-			}}
+			onClick={
+				clickable
+					? () => {
+							setSelectedSpacecraftId(id);
+					  }
+					: null
+			}
 			className={`${styles.spacecraftButton} ${
 				selectedSpacecraftId === id &&
 				setSelectedSpacecraftId !== undefined
