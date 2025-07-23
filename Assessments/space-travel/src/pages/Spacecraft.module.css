@@ -1,0 +1,21 @@
+.pageHeader {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 4em;
+}
+.pageBody {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.details {
+	flex: 1 1 50%;
+	display: block;
+	padding: 1em;
+	box-sizing: border-box;
+}
+
+.description {
+	font-size: 1.2em;
+	margin-bottom: 0.7em;
+}

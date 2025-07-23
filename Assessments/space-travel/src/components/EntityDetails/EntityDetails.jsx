@@ -4,6 +4,7 @@ const EntityDetails = ({ labels, size = "medium", showLabels = true }) => {
 	const entitySizes = {
 		small: ".8em",
 		medium: ".9em",
+		large: "1.2em",
 	};
 
 	return (

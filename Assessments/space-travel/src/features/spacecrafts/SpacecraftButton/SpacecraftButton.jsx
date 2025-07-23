@@ -5,11 +5,12 @@ const thumbnailSizes = {
 	small: { x: 50, y: 50 },
 	medium: { x: 75, y: 75 },
 	large: { x: 100, y: 100 },
+	xLarge: { x: 150, y: 150 },
 };
 
 const SpacecraftButton = ({
 	id,
-	path = "",
+	path = null,
 	size = "small",
 	pictureUrl,
 	selectedSpacecraftId,
@@ -23,7 +24,10 @@ const SpacecraftButton = ({
 				setSelectedSpacecraftId(id);
 			}}
 			className={`${styles.spacecraftButton} ${
-				selectedSpacecraftId === id ? styles.selected : ""
+				selectedSpacecraftId === id &&
+				setSelectedSpacecraftId !== undefined
+					? styles.selected
+					: ""
 			}`}
 		>
 			<img

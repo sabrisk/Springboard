@@ -2,6 +2,7 @@ import styles from "./SpacecraftCard.module.css";
 import SpacecraftButton from "../SpacecraftButton/SpacecraftButton";
 import EntityDetails from "../../../components/EntityDetails/EntityDetails";
 import ActionButton from "../../../components/ActionButton/ActionButton";
+import placeholderImg from "../../../../images/placeholder-thumb.png";
 
 import { destroySpacecraftById } from "../spacecraftsSlice";
 
@@ -19,14 +20,20 @@ const SpacecraftCard = ({ id, name, capacity, pictureUrl }) => {
 		},
 	];
 
+	const imgSrc =
+		pictureUrl && pictureUrl.trim() !== "" ? pictureUrl : placeholderImg;
+
 	return (
 		<div className={styles.spaceCraftCard}>
-			<SpacecraftButton size="large" pictureUrl={pictureUrl} />
+			<SpacecraftButton
+				size="large"
+				pictureUrl={imgSrc}
+				path={`/spacecrafts/${id}`}
+			/>
 			<EntityDetails labels={labels} />
 			<div className={styles.action}>
 				<ActionButton
 					actionFunc={() => {
-						console.log("actionFunc", id);
 						dispatch(destroySpacecraftById({ id }));
 					}}
 					emoji={"💥"}
