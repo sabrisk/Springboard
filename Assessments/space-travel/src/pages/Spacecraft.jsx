@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import SpacecraftButton from "../features/spacecrafts/SpacecraftButton/SpacecraftButton";
+import SpacecraftButton from "../components/SpacecraftButton/SpacecraftButton";
 import EntityDetails from "../components/EntityDetails/EntityDetails";
 import Loader from "../components/Loader/Loader";
 

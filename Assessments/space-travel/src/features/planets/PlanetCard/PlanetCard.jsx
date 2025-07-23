@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import EntityDetails from "../../../components/EntityDetails/EntityDetails";
-import SpacecraftButton from "../../spacecrafts/SpacecraftButton/SpacecraftButton";
+import SpacecraftButton from "../../../components/SpacecraftButton/SpacecraftButton";
 
 import { selectAllSpacecrafts } from "../../spacecrafts/spacecraftsSlice";
 

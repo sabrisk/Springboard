@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import SpacecraftButton from "../SpacecraftButton/SpacecraftButton";
+import SpacecraftButton from "../../../components/SpacecraftButton/SpacecraftButton";
 import EntityDetails from "../../../components/EntityDetails/EntityDetails";
 import ActionButton from "../../../components/ActionButton/ActionButton";
 import placeholderImg from "../../../../images/placeholder-thumb.png";
