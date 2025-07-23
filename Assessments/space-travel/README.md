@@ -31,4 +31,4 @@ This will clear all saved data for a fresh start. Then just refresh the page and
 
 ## 📝 Notes
 
--   Spacecraft names that are **7 characters or less** work best.
+-   Spacecraft names that are **8 characters or less** work best.
