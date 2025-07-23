@@ -50,14 +50,19 @@ const PlanetsList = () => {
 				(planet) => planet.id === spacecraft.currentLocation
 			);
 
-			dispatch(
-				sendSpacecraftToPlanet({
-					spacecraftId: selectedSpacecraftId,
-					originPlanetId: originPlanet.id,
-					targetPlanetId: selectedPlanetId,
-					capacity: spacecraft.capacity,
-				})
-			);
+			if (originPlanet.id !== selectedPlanetId) {
+				dispatch(
+					sendSpacecraftToPlanet({
+						spacecraftId: selectedSpacecraftId,
+						originPlanetId: originPlanet.id,
+						targetPlanetId: selectedPlanetId,
+						capacity: spacecraft.capacity,
+					})
+				);
+			} else {
+				setSelectedPlanetId("");
+				setSelectedSpacecraftId("");
+			}
 		}
 	}, [selectedPlanetId, selectedSpacecraftId, dispatch]);
 
