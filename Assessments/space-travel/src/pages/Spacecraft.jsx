@@ -54,7 +54,11 @@ const Spacecraft = () => {
 					{spacecraft ? (
 						<p className={styles.description}>Description</p>
 					) : null}
-					{spacecraft && <p>{spacecraft.description}</p>}
+					{spacecraft && (
+						<p className={styles.descriptionDetails}>
+							{spacecraft.description}
+						</p>
+					)}
 				</div>
 			</div>
 			{!spacecraft && <Loader />}
