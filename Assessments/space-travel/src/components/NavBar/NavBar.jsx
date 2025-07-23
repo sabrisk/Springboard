@@ -12,7 +12,7 @@ const NavBar = () => {
 	return (
 		<nav className={styles.nav}>
 			{links.map((link) => (
-				<AppNavLink {...link} />
+				<AppNavLink {...link} key={link.name} />
 			))}
 		</nav>
 	);

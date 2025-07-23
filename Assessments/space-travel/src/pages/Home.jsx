@@ -31,7 +31,7 @@ const Home = () => {
 			<h2>Space Travel: Expanding Horizons Beyond Earth</h2>
 			<div className={styles.cards}>
 				{data.map((cardInfo) => (
-					<InfoCard {...cardInfo} />
+					<InfoCard key={cardInfo.title} {...cardInfo} />
 				))}
 			</div>
 		</div>

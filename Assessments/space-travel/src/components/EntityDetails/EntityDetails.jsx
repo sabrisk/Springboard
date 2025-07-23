@@ -13,8 +13,8 @@ const EntityDetails = ({ labels, size = "medium", showLabels = true }) => {
 			style={{ fontSize: entitySizes[size] }}
 		>
 			{labels.map(
-				({ nameLabel, nameValue, amountLabel, amountValue }) => (
-					<>
+				({ nameLabel, nameValue, amountLabel, amountValue }, index) => (
+					<div className={styles.labels} key={index}>
 						<p>
 							{showLabels && nameLabel}
 							{nameValue}
@@ -23,18 +23,9 @@ const EntityDetails = ({ labels, size = "medium", showLabels = true }) => {
 							{showLabels && amountLabel}
 							{amountValue}
 						</p>
-					</>
+					</div>
 				)
 			)}
-
-			{/* <p>
-				{showLabels && "Name: "}
-				{name}
-			</p>
-			<p>
-				{showLabels && "Capacity: "}
-				{amount}
-			</p> */}
 		</div>
 	);
 };

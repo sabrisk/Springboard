@@ -25,11 +25,12 @@ const SpacecraftsList = () => {
 	}, [spacecraftsStatus, dispatch]);
 
 	let content;
-	console.log("status", spacecraftsStatus);
 	if (spacecraftsStatus === "loading") {
 		content = <p>"Loading..."</p>;
 	} else if (spacecraftsStatus === "succeeded") {
-		content = spacecrafts.map((craft) => <SpacecraftCard {...craft} />);
+		content = spacecrafts.map((craft) => (
+			<SpacecraftCard {...craft} key={craft.id} />
+		));
 	} else if (spacecraftsStatus === "failed") {
 		content = <p>{spacecraftsError}</p>;
 	}
