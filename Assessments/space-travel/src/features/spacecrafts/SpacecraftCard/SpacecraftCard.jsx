@@ -1,4 +1,5 @@
-import styles from "./SpacecraftCard.module.css";
+import { useDispatch } from "react-redux";
+
 import SpacecraftButton from "../SpacecraftButton/SpacecraftButton";
 import EntityDetails from "../../../components/EntityDetails/EntityDetails";
 import ActionButton from "../../../components/ActionButton/ActionButton";
@@ -6,7 +7,7 @@ import placeholderImg from "../../../../images/placeholder-thumb.png";
 
 import { destroySpacecraftById } from "../spacecraftsSlice";
 
-import { useDispatch } from "react-redux";
+import styles from "./SpacecraftCard.module.css";
 
 const SpacecraftCard = ({ id, name, capacity, pictureUrl }) => {
 	const dispatch = useDispatch();

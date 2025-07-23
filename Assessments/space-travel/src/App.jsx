@@ -4,7 +4,7 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
-// import styles from "./App.module.css";
+
 import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
 import Spacecrafts from "./pages/Spacecrafts";

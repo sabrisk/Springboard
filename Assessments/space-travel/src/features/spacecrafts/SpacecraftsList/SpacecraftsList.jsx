@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import SpacecraftCard from "../SpacecraftCard/SpacecraftCard";
+import Loader from "../../../components/Loader/Loader";
 
-import { useSelector, useDispatch } from "react-redux";
 import {
 	getSpacecrafts,
 	selectAllSpacecrafts,
@@ -11,7 +12,6 @@ import {
 } from "../spacecraftsSlice";
 
 import styles from "./SpacecraftsList.module.css";
-import Loader from "../../../components/Loader/Loader";
 
 const SpacecraftsList = () => {
 	const dispatch = useDispatch();

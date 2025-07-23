@@ -1,10 +1,12 @@
-import styles from "./PlanetCard.module.css";
+import { useDispatch, useSelector } from "react-redux";
+
 import EntityDetails from "../../../components/EntityDetails/EntityDetails";
 import SpacecraftButton from "../../spacecrafts/SpacecraftButton/SpacecraftButton";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
 import { selectAllSpacecrafts } from "../../spacecrafts/spacecraftsSlice";
+
 import placeholderImg from "../../../../images/placeholder-thumb.png";
+import styles from "./PlanetCard.module.css";
 
 const thumbnailSizes = {
 	small: { x: 50, y: 50 },

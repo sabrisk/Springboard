@@ -1,6 +1,6 @@
-import styles from "./Home.module.css";
-
 import InfoCard from "../features/home/InfoCard/InfoCard";
+
+import styles from "./Home.module.css";
 
 const data = [
 	{

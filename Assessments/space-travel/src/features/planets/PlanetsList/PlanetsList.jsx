@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import PlanetCard from "../PlanetCard/PlanetCard";
+import Loader from "../../../components/Loader/Loader";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -15,8 +16,6 @@ import {
 	selectSendSpacecraftToPlanetStatus,
 	selectAllSpacecrafts,
 } from "../../spacecrafts/spacecraftsSlice";
-
-import Loader from "../../../components/Loader/Loader";
 
 import styles from "./PlanetsList.module.css";
 

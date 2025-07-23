@@ -1,12 +1,13 @@
-import { selectAllSpacecrafts } from "../features/spacecrafts/spacecraftsSlice";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import SpacecraftButton from "../features/spacecrafts/SpacecraftButton/SpacecraftButton";
+import EntityDetails from "../components/EntityDetails/EntityDetails";
+import Loader from "../components/Loader/Loader";
 
 import placeholderImg from "../../images/placeholder-thumb.png";
-import EntityDetails from "../components/EntityDetails/EntityDetails";
 
-import Loader from "../components/Loader/Loader";
+import { selectAllSpacecrafts } from "../features/spacecrafts/spacecraftsSlice";
 
 import styles from "./Spacecraft.module.css";
 
