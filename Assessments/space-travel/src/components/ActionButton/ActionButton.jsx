@@ -12,7 +12,6 @@ const ActionButton = ({ name, emoji, path, actionFunc, isSubmit = false }) => {
 
 		if (actionFunc) {
 			const value = await actionFunc();
-			console.log("value", value);
 		}
 
 		if (path) {
