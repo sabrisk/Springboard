@@ -4,6 +4,7 @@ import SpacecraftButton from "../../spacecrafts/SpacecraftButton/SpacecraftButto
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectAllSpacecrafts } from "../../spacecrafts/spacecraftsSlice";
+import placeholderImg from "../../../../images/placeholder-thumb.png";
 
 const thumbnailSizes = {
 	small: { x: 50, y: 50 },
@@ -47,6 +48,11 @@ const PlanetCard = ({
 		return craft.currentLocation === planet.id;
 	});
 
+	const planetImgSrc =
+		planet?.pictureUrl && planet.pictureUrl.trim() !== ""
+			? planet.pictureUrl
+			: placeholderImg;
+
 	return (
 		<div className={styles.planetCard}>
 			<div
@@ -57,28 +63,40 @@ const PlanetCard = ({
 					setSelectedPlanetId(planet.id);
 				}}
 			>
-				<img src={planet.pictureUrl} alt="" width={x} height={y} />
+				<img src={planetImgSrc} alt="" width={x} height={y} />
 				<div className={styles.details}>
 					<EntityDetails labels={planetLabels} showLabels={false} />
 				</div>
 			</div>
 			<div className={styles.spacecrafts}>
-				{filteredSpacecrafts.map((craft) => (
-					<div key={craft.id} className={styles.spacecraftDetails}>
-						<SpacecraftButton
-							id={craft.id}
-							size="small"
-							pictureUrl={craft.pictureUrl}
-							selectedSpacecraftId={selectedSpacecraftId}
-							setSelectedSpacecraftId={setSelectedSpacecraftId}
-						/>
-						<EntityDetails
-							labels={getSpacecraftLabels(craft)}
-							showLabels={false}
-							size="small"
-						/>
-					</div>
-				))}
+				{filteredSpacecrafts.map((craft) => {
+					const craftImgSrc =
+						craft.pictureUrl && craft.pictureUrl.trim() !== ""
+							? craft.pictureUrl
+							: placeholderImg;
+
+					return (
+						<div
+							key={craft.id}
+							className={styles.spacecraftDetails}
+						>
+							<SpacecraftButton
+								id={craft.id}
+								size="small"
+								pictureUrl={craftImgSrc}
+								selectedSpacecraftId={selectedSpacecraftId}
+								setSelectedSpacecraftId={
+									setSelectedSpacecraftId
+								}
+							/>
+							<EntityDetails
+								labels={getSpacecraftLabels(craft)}
+								showLabels={false}
+								size="small"
+							/>
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
