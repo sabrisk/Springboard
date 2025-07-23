@@ -16,6 +16,8 @@ import {
 	selectAllSpacecrafts,
 } from "../../spacecrafts/spacecraftsSlice";
 
+import Loader from "../../../components/Loader/Loader";
+
 import styles from "./PlanetsList.module.css";
 
 const PlanetsList = () => {
@@ -66,17 +68,11 @@ const PlanetsList = () => {
 		}
 	}, [sendSpacecraftStatus]);
 
-	// if (selectedPlanetId && selectedSpacecraftId) {
-	// 	//dispatch here
-	// 	setSelectedPlanetId("");
-	// 	setSelectedSpacecraftId("");
-	// }
-
 	const updateSpacecraftLocation = (spacecraftId, planetId) => {};
 
 	let content;
 	if (planetsStatus === "loading") {
-		content = <p>"Loading..."</p>;
+		content = <Loader />;
 	} else if (planetsStatus === "succeeded") {
 		content = planets.map((planet) => (
 			<PlanetCard
@@ -92,7 +88,12 @@ const PlanetsList = () => {
 		content = <p>{planetsError}</p>;
 	}
 
-	return <div className={styles.pageBody}>{content}</div>;
+	return (
+		<div className={styles.pageBody}>
+			{content}
+			{sendSpacecraftStatus === "loading" && <Loader />}
+		</div>
+	);
 };
 
 export default PlanetsList;

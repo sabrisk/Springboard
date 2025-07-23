@@ -11,6 +11,7 @@ import {
 } from "../spacecraftsSlice";
 
 import styles from "./SpacecraftsList.module.css";
+import Loader from "../../../components/Loader/Loader";
 
 const SpacecraftsList = () => {
 	const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const SpacecraftsList = () => {
 
 	let content;
 	if (spacecraftsStatus === "loading") {
-		content = <p>"Loading..."</p>;
+		content = <Loader />;
 	} else if (spacecraftsStatus === "succeeded") {
 		content = spacecrafts.map((craft) => (
 			<SpacecraftCard {...craft} key={craft.id} />

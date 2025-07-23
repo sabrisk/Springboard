@@ -53,6 +53,7 @@ const Spacecraft = () => {
 					{spacecraft && <p>{spacecraft.description}</p>}
 				</div>
 			</div>
+			{!spacecraft && <Loader />}
 		</div>
 	);
 };
