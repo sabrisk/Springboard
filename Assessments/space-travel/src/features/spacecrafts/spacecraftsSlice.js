@@ -7,12 +7,13 @@ const initialState = {
 	buildSpacecraftStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 	destroySpacecraftByIdStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 	sendSpacecraftToPlanetStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+	getSpacecraftByIdStatus: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
 
 	getSpacecraftsError: null,
 	buildSpacecraftError: null,
-
 	destroySpacecraftByIdError: null,
 	sendSpacecraftToPlanetError: null,
+	getSpacecraftByIdError: null,
 };
 
 export const getSpacecrafts = createAsyncThunk(
@@ -20,6 +21,18 @@ export const getSpacecrafts = createAsyncThunk(
 	async () => {
 		try {
 			const response = await SpaceTravelApi.getSpacecrafts();
+			return [...response.data];
+		} catch (err) {
+			return err.message;
+		}
+	}
+);
+
+export const getSpacecraftById = createAsyncThunk(
+	"spacecrafts/getSpacecraftById",
+	async ({ id }) => {
+		try {
+			const response = await SpaceTravelApi.getSpacecraftById({ id });
 			return [...response.data];
 		} catch (err) {
 			return err.message;
@@ -86,6 +99,19 @@ const spacecraftsSlice = createSlice({
 				state.getSpacecraftsStatus = "failed";
 				state.getSpacecraftsError = action.error.message;
 			})
+
+			.addCase(getSpacecraftById.pending, (state, action) => {
+				state.getSpacecraftByIdStatus = "loading";
+			})
+			.addCase(getSpacecraftById.fulfilled, (state, action) => {
+				state.getSpacecraftByIdStatus = "succeeded";
+				state.list = action.payload;
+			})
+			.addCase(getSpacecraftById.rejected, (state, action) => {
+				state.getSpacecraftByIdStatus = "failed";
+				state.getSpacecraftByIdError = action.error.message;
+			})
+
 			.addCase(buildSpacecraft.pending, (state, action) => {
 				state.buildSpacecraftStatus = "loading";
 			})
