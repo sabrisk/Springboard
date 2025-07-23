@@ -64,7 +64,7 @@ const PlanetCard = ({
 			</div>
 			<div className={styles.spacecrafts}>
 				{filteredSpacecrafts.map((craft) => (
-					<div className={styles.spacecraftDetails}>
+					<div key={craft.id} className={styles.spacecraftDetails}>
 						<SpacecraftButton
 							id={craft.id}
 							size="small"

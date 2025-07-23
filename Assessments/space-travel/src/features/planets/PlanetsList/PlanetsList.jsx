@@ -80,6 +80,7 @@ const PlanetsList = () => {
 	} else if (planetsStatus === "succeeded") {
 		content = planets.map((planet) => (
 			<PlanetCard
+				key={planet.id}
 				planet={planet}
 				selectedPlanetId={selectedPlanetId}
 				setSelectedPlanetId={setSelectedPlanetId}
