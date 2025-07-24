@@ -23,7 +23,7 @@ export const getSpacecrafts = createAsyncThunk(
 			const response = await SpaceTravelApi.getSpacecrafts();
 			return [...response.data];
 		} catch (err) {
-			return err.message;
+			throw new Error(err.message);
 		}
 	}
 );
@@ -35,7 +35,7 @@ export const getSpacecraftById = createAsyncThunk(
 			const response = await SpaceTravelApi.getSpacecraftById({ id });
 			return [...response.data];
 		} catch (err) {
-			return err.message;
+			throw new Error(err.message);
 		}
 	}
 );
@@ -50,7 +50,7 @@ export const buildSpacecraft = createAsyncThunk(
 			await dispatch(getSpacecrafts());
 			return response;
 		} catch (err) {
-			return err.message;
+			throw new Error(err.message);
 		}
 	}
 );
@@ -63,7 +63,7 @@ export const destroySpacecraftById = createAsyncThunk(
 			await dispatch(getSpacecrafts());
 			return response;
 		} catch (err) {
-			return err.message;
+			throw new Error(err.message);
 		}
 	}
 );
@@ -78,7 +78,7 @@ export const sendSpacecraftToPlanet = createAsyncThunk(
 			});
 			return { spacecraftId, originPlanetId, targetPlanetId, capacity };
 		} catch (err) {
-			return err.message;
+			throw new Error(err.message);
 		}
 	}
 );
