@@ -30,6 +30,10 @@ const Spacecraft = () => {
 		},
 	];
 
+	if (spacecrafts.length >= 0 && spacecraft === undefined) {
+		return <p>Spacecraft not found.</p>;
+	}
+
 	return (
 		<div>
 			<div className={styles.pageHeader}>
