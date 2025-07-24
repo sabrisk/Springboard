@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -16,6 +17,8 @@ const Spacecraft = () => {
 	const spacecrafts = useSelector(selectAllSpacecrafts);
 	const spacecraft = spacecrafts.find((craft) => id === craft.id);
 
+	const [hasBeenFiveSeconds, setHasBeenFiveSeconds] = useState(false);
+
 	const imgSrc =
 		spacecraft?.pictureUrl && spacecraft.pictureUrl.trim() !== ""
 			? spacecraft.pictureUrl
@@ -30,7 +33,17 @@ const Spacecraft = () => {
 		},
 	];
 
-	if (spacecrafts.length >= 0 && spacecraft === undefined) {
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setHasBeenFiveSeconds(true);
+		}, 3000);
+
+		return () => clearTimeout(timeoutId);
+	}, []);
+
+	// Wait until 3 seconds has elapsed
+	// to avoid showing Spacecraft not Found early.
+	if (hasBeenFiveSeconds && !spacecraft) {
 		return <p>Spacecraft not found.</p>;
 	}
 
@@ -66,7 +79,7 @@ const Spacecraft = () => {
 					)}
 				</div>
 			</div>
-			{!spacecraft && <Loader />}
+			{!spacecraft && !hasBeenFiveSeconds && <Loader />}
 		</div>
 	);
 };
