@@ -140,8 +140,11 @@ const spacecraftsSlice = createSlice({
 				const spacecraftToUpdate = state.list.find(
 					(craft) => craft.id === action.payload.spacecraftId
 				);
-				spacecraftToUpdate.currentLocation =
-					action.payload.targetPlanetId;
+
+				if (spacecraftToUpdate) {
+					spacecraftToUpdate.currentLocation =
+						action.payload.targetPlanetId;
+				}
 			})
 			.addCase(sendSpacecraftToPlanet.rejected, (state, action) => {
 				state.sendSpacecraftToPlanetStatus = "failed";
