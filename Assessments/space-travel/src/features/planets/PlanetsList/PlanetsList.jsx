@@ -80,8 +80,6 @@ const PlanetsList = () => {
 		}
 	}, [sendSpacecraftStatus]);
 
-	const updateSpacecraftLocation = (spacecraftId, planetId) => {};
-
 	let content;
 	if (planetsStatus === "loading") {
 		content = <Loader />;
