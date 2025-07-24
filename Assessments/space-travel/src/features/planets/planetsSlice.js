@@ -50,15 +50,19 @@ const planetsSlice = createSlice({
 					(planet) => planet.id === originPlanetId
 				);
 
+				const targetPlanet = state.list.find(
+					(planet) => planet.id === targetPlanetId
+				);
+
+				if (!originPlanet || !targetPlanet) {
+					return;
+				}
+
 				if (originPlanet.currentPopulation < transferredCapacity) {
 					transferredCapacity = originPlanet.currentPopulation;
 				}
 
 				originPlanet.currentPopulation -= transferredCapacity;
-
-				const targetPlanet = state.list.find(
-					(planet) => planet.id === targetPlanetId
-				);
 				targetPlanet.currentPopulation += transferredCapacity;
 			})
 			.addCase(sendSpacecraftToPlanet.rejected, (state, action) => {
