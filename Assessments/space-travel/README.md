@@ -4,7 +4,7 @@ A simple project for building and managing spacecraft.
 
 ## 📥 Installation Instructions
 
-Clone **only** this project folder (`Assessments/space-travel`) from the larger `Springboard` repository:
+Clone **only** this project folder (`Assessments/space-travel`) from my larger `Springboard` repository:
 
 1. git clone --depth 1 --filter=blob:none --sparse https://github.com/Sabrisk/Springboard.git
 2. cd Springboard
