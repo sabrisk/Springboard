@@ -15,7 +15,7 @@ export const getPlanets = createAsyncThunk("planets/getPlanets", async () => {
 		const response = await SpaceTravelApi.getPlanets();
 		return [...response.data];
 	} catch (err) {
-		return err.message;
+		throw new Error(err.message);
 	}
 });
 
