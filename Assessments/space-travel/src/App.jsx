@@ -11,6 +11,7 @@ import Spacecrafts from "./pages/Spacecrafts";
 import Planets from "./pages/Planets";
 import Construction from "./pages/Construction";
 import Spacecraft from "./pages/Spacecraft";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -22,8 +23,8 @@ const router = createBrowserRouter(
 				path="/spacecrafts/construction"
 				element={<Construction />}
 			/>
-
 			<Route path="/planets" element={<Planets />} />
+			<Route path="*" element={<NotFound />} />
 		</Route>
 	)
 );

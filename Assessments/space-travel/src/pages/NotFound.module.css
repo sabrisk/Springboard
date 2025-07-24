@@ -1,0 +1,9 @@
+.notFound {
+	display: flex;
+	gap: 2em;
+	flex-direction: column;
+}
+
+.notFound h2 {
+	font-size: 2em;
+}
