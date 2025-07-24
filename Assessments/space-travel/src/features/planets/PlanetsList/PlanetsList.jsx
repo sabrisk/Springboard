@@ -49,6 +49,13 @@ const PlanetsList = () => {
 				(planet) => planet.id === spacecraft.currentLocation
 			);
 
+			if (!spacecraft || !originPlanet) {
+				setSelectedPlanetId("");
+				setSelectedSpacecraftId("");
+				return;
+			}
+
+			// Only send spacecraft to different planet
 			if (originPlanet.id !== selectedPlanetId) {
 				dispatch(
 					sendSpacecraftToPlanet({
@@ -58,6 +65,7 @@ const PlanetsList = () => {
 						capacity: spacecraft.capacity,
 					})
 				);
+				// Don't dispatch and clear selections in state if it is the same planet
 			} else {
 				setSelectedPlanetId("");
 				setSelectedSpacecraftId("");
