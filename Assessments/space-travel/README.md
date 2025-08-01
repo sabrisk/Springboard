@@ -28,15 +28,3 @@ If you need to **reset the application state**, open your browser’s DevTools c
 localStorage.clear()
 
 This will clear all saved data for a fresh start. Then just refresh the page and you're good to go.
-
-## 📝 Notes
-
--   Spacecraft names that are **8 characters or less** work best.
-
-## 🗒️ Notes for Grading
-
--   The rubric asks for props type validation, but TypeScript comes later in the course so I haven’t learned how to do that yet.
-
--   I used Vite and Redux Toolkit but the React Testing Library videos didn't really cover how to test with Vite and RTK. It's based on Create React App. I chose not to delay submitting the project and skip building the tests since I'm already a bit behind in the bootcamp. Seems like I need to spend a fair amount of time on my own learning how to do the testing with Redux. If I need to resubmit the assignment though, I'll try to spend more time to figure it out.
-
--   I also don't have some of the folders (like context) that the rubric asks for since I tried to adhere to Redux best practices.
