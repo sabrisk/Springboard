@@ -154,7 +154,9 @@ SELECT
 app_name,
 	reviews,
 	min_installs,
-	min_installs/reviews as min_installs_by_reviews
+	min_installs/reviews as proportion
 	from analytics
 	WHERE min_installs >= 100000
+    ORDER BY proportion DESC
+    LIMIT 1;
 	
