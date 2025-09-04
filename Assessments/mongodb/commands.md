@@ -1,3 +1,17 @@
+### Create
+
+## 1. **Insert a New Document into the Users Collection. Practice adding a new user document to the users collection. Include fields name and email.**
+
+```
+Clicked Add Data > Insert Document
+{
+  "name": "Brock Keasler",
+  "email": "Brock@test.com"
+}
+```
+
+### Read
+
 ## 1. Find all movies directed by Christopher Nolan.
 
 ```
@@ -35,7 +49,7 @@ Project: { title: 1, _id: 0 }
 ## 5. Find movies that starred both and only "Tom Hanks" and "Tim Allen".
 
 ```
-Filter:{"cast": { "$all": ["Tom Hanks", "Tim Allen"], "$size": 2 }}
+Filter: {"cast": { "$all": ["Tom Hanks", "Tim Allen"], "$size": 2 }}
 
 Project: {title:1,"_id":0}
 ```
@@ -80,7 +94,6 @@ This filter doesn't work and I don't know why. I can't update it if I can't get 
 Filter: { 'imdb.rating': { $lt: 5 } }
 
 Update JSON dialog box: {$inc:{"imdb.rating":1}}
-
 ```
 
 ### Delete
@@ -114,19 +127,17 @@ Filter:
 Filter: { title: 'The Matrix' }
 
 Update JSON dialog box {$set: {num_mflix_comments:0}}
-
-
-
 ```
 
 ## 3. Delete all movies that do not have any genres.
 
 ```
-Filter: {
-  "$or": [
-    { "genres": { "$size": 0 } },
-    { "genres": { "$exists": false } },
-    { "genres": null }
+Filter:
+{
+  $or: [
+    { genres: { $size: 0 } },
+    { genres: { $exists: false } },
+    { genres: null }
   ]
 }
 
@@ -142,31 +153,26 @@ I used the aggregations tab and had to google how to do this. I don't think the 
 
 [
   {
-    $project:
-      {
-        released: {
-          $year: "$released"
-        }
+    $project: {
+      released: {
+        $year: "$released"
       }
+    }
   },
   {
-    $group:
-      {
-        _id: "$released",
-        numMovies: {
-          $sum: 1
-        }
+    $group: {
+      _id: "$released",
+      numMovies: {
+        $sum: 1
       }
+    }
   },
   {
     $sort: {
-
-        _id: 1
-
+      _id: 1
     }
   }
 ]
-
 ```
 
 ## 2. Calculate the average IMDb rating for movies grouped by director and display from highest to lowest.
