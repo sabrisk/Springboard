@@ -3,13 +3,9 @@
 let DB_URI;
 
 if (process.env.NODE_ENV === "test") {
-	DB_URI =
-		process.env.TEST_DATABASE_URL ||
-		`postgresql://${process.env.USER}:${process.env.PASS}@localhost:5432/booksdb`;
+	DB_URI = process.env.TEST_DATABASE_URL;
 } else {
-	DB_URI =
-		process.env.DATABASE_URL ||
-		`postgresql://${process.env.USER}:${process.env.PASS}@localhost:5432/booksdb`;
+	DB_URI = process.env.DATABASE_URL;
 }
 
 module.exports = { DB_URI };
