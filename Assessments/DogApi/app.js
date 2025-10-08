@@ -1,7 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+import Dog from "./models/Dog.js";
 
+dotenv.config();
 const app = express();
 
 app.use(express.json());
@@ -13,10 +16,13 @@ try {
 	const result = await mongoose.connect(dbURI);
 	console.log("Connected to database");
 	app.listen(3000);
+	console.log("Listening on port 3000");
 } catch (error) {
 	console.log(error);
 }
 
 app.get("/dogs", async (req, res) => {
-	res.status(200).json({ message: "Dogs gets successful." });
+	const result = await Dog.find();
+	console.log(result);
+	res.status(200).json({ data: result });
 });

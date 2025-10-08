@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 import { isEmail } from "validator";
 import bcrypt from "bcrypt";
-import cookieParser from "cookie-parser";
 
 const userSchema = new mongoose.Schema({
 	email: {
