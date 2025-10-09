@@ -1,8 +1,10 @@
 import express from "express";
-import mongoose from "mongoose";
-import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
-import Dog from "./models/Dog.js";
+import mongoose from "mongoose";
+import authRoutes from "./routes/authRoutes.js";
+import dogRoutes from "./routes/dogRoutes.js";
+import cookieParser from "cookie-parser";
+import { checkUser } from "./middlewares/authMiddleware.js";
 
 dotenv.config();
 const app = express();
@@ -20,9 +22,12 @@ try {
 } catch (error) {
 	console.log(error);
 }
+app.use(checkUser);
 
-app.get("/dogs", async (req, res) => {
-	const result = await Dog.find();
-	console.log(result);
-	res.status(200).json({ data: result });
-});
+// app.post("/register", async (req, res) => {
+// 	const { username, password } = req.body;
+// 	const result = await Dog.insertOne
+// });
+app.use(dogRoutes);
+app.use(authRoutes);
+console.log("app.js");

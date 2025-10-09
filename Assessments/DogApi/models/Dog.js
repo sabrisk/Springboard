@@ -14,6 +14,17 @@ const dogSchema = new mongoose.Schema({
 		enum: ["available", "adopted"],
 		default: "available",
 	},
+	initialOwner: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "user",
+		required: [true, "Dog must have an initial owner"],
+	},
+	adoptedBy: {
+		type: mongoose.Schema.Types.ObjectId, //object id
+		ref: "user",
+	},
 });
 
-export default mongoose.model("dog", dogSchema);
+export const Dog = mongoose.model("dog", dogSchema);
+
+console.log("Dog");

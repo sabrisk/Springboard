@@ -1,8 +1,15 @@
-const mongoose = require("mongoose");
-import { isEmail } from "validator";
+import mongoose from "mongoose";
+import validator from "validator";
+const { isEmail } = validator;
 import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		required: [true, "Please enter a name"],
+		minlength: [3, "Minimum name length is 3 characters"],
+		maxlength: [50, "Maximum name length is 50 characters"],
+	},
 	email: {
 		type: String,
 		required: [true, "Please enter an email"],
@@ -15,8 +22,6 @@ const userSchema = new mongoose.Schema({
 		required: [true, "Please enter a password"],
 		minlength: [6, "Minimum password length is 6 characters"],
 	},
-	dogsForAdoption: [dogSubSchema],
-	adoptedDogs: [dogSubSchema],
 });
 
 // fire a function before doc saved to db
