@@ -5,11 +5,10 @@ import { defineConfig } from "eslint/config";
 export default defineConfig([
 	{
 		files: ["**/*.{js,mjs,cjs}"],
-		plugins: { js: js, import: "eslint-plugin-import" },
-		extends: ["js/recommended"],
+		plugins: ["js", "import"],
+		extends: ["js/recommended", "plugin:import/recommended"],
 		languageOptions: { globals: globals.browser },
 		rules: {
-			// enable import/no-cycle
 			"import/no-cycle": ["error", { maxDepth: 3 }],
 		},
 	},
