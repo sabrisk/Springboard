@@ -33,7 +33,6 @@ userSchema.pre("save", async function (next) {
 
 // fire a function after doc saved to db
 userSchema.post("save", function (doc, next) {
-	console.log("new user was created & saved", doc);
 	next();
 });
 

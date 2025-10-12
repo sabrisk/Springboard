@@ -17,5 +17,3 @@ router.post("/dogs", requireAuth, dog_post);
 router.post("/dogs/:id/adopt", requireAuth, adopt_dog_post);
 router.post("/dogs/:id/remove", requireAuth, remove_dog_post);
 export default router;
-
-console.log("dogRoutes");

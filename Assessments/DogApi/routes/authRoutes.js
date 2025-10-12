@@ -10,5 +10,3 @@ router.post("/signup", signup_post); // good
 router.post("/login", login_post); // good
 router.get("/logout", logout_get);
 export default router;
-
-console.log("authRoutes");

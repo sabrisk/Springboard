@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 
 //handle errors
 const handleErrors = (err) => {
-	console.log(err.message, err.code);
 	let errors = { email: "", password: "" };
 
 	// incorrect email
@@ -33,7 +32,7 @@ const handleErrors = (err) => {
 
 const maxAge = 24 * 60 * 60; // 1 days in seconds
 const createToken = (id) => {
-	return jwt.sign({ id }, "net ninja secret", { expiresIn: maxAge });
+	return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: maxAge });
 };
 
 export const signup_post = async (req, res) => {
@@ -64,13 +63,12 @@ export const login_post = async (req, res) => {
 
 		res.status(200).json({ user: user._id });
 	} catch (error) {
+		console.log(error);
 		const errors = handleErrors(error);
 		res.status(400).json({ errors });
 	}
 };
 export const logout_get = (req, res) => {
 	res.cookie("jwt", "", { maxAge: 1 });
-	res.json({ msg: "logout get" });
+	res.json({ msg: "User logged out" });
 };
-
-console.log("authController");

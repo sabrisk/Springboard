@@ -123,5 +123,3 @@ dogSchema.statics.deleteDog = async function (dogId, ownerId) {
 };
 
 export const Dog = mongoose.model("dog", dogSchema);
-
-console.log("Dog");
